@@ -2,10 +2,6 @@ const router = require('express').Router();
 const { read, save } = require('../readWrite.js');
 const dbPath = './api/blog.json';
 
-router.get('/api/test', (req, res) => { //this is a test 
-    res.send('were up and going');
-});
-
 //get all from db - /get/all
 router.get('/get/all', (req, res) => {
     try {
@@ -33,7 +29,7 @@ router.get('/get/one/:id', (req, res) => {
 
 //post - /create - entry should contain {post_id, author, title, body}
 router.post('/create', (req,res) => {
-    try {
+    try { //try to get the new post created with the given params, change its id to +1 of what the old id was and save it to our json file
         const allPosts = read(dbPath)
         const { title, author, body } = req.body
          const post = {
@@ -52,7 +48,7 @@ router.post('/create', (req,res) => {
 
 // put - /update/:id - if no data is given for any item do not update the item
 router.put('/update/:id', (req, res) => {
-    try {
+    try { //try to update a post by the id given with the new data 
         const postId = req.params.id;
         const { title, author, body } = req.body;
         const allPosts = read(dbPath);
@@ -81,8 +77,6 @@ router.delete('/delete/:id', (req, res) => {
     try {
         const postId = req.params.id;
         let allPosts = read(dbPath); 
-
-        
         const postIndex = allPosts.findIndex(post => post.post_id.toString() === postId);// Find the index of the post with the given postId
 
         if (postIndex === -1) { // If post not found, return 404
@@ -90,7 +84,6 @@ router.delete('/delete/:id', (req, res) => {
             return;
         }
         const deletedPost = allPosts.splice(postIndex, 1);// Remove the post from the array
-
         save(allPosts, dbPath);
         res.status(200).json({ message: 'Post deleted', deletedPost });//notify the user and show the post deleted
     } catch (error) {
