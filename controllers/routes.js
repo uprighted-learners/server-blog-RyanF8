@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { read, save } = require('../readWrite.js');
 const dbPath = './api/blog.json';
+const { v4: uuidv4 } = require('uuid')//random id generator
 
 //get all from db - /get/all
 router.get('/get/all', (req, res) => {
@@ -17,7 +18,7 @@ router.get('/get/one/:id', (req, res) => {
     try {
         const postId = req.params.id;
         const allPosts = read(dbPath);
-        const onePost = allPosts.find(post => post.post_id.toString() === postId);//get the whole post, stringify the id because its comparing a number to a string, get the id that matches the params 
+        const onePost = allPosts.find(post => post.post_id === postId);//find all post then find the matching id of the post 
         
         if (!onePost) res.status(404).json({message: 'id does not exist'}); //error if the id does not exist 
     
@@ -33,7 +34,7 @@ router.post('/create', (req,res) => {
         const allPosts = read(dbPath)
         const { title, author, body } = req.body
          const post = {
-            post_id: allPosts.length + 1,
+            post_id: uuidv4(),//generate a uuid for each new post
             title,
             author,
             body
@@ -52,7 +53,7 @@ router.put('/update/:id', (req, res) => {
         const postId = req.params.id;
         const { title, author, body } = req.body;
         const allPosts = read(dbPath);
-        const postIndex = allPosts.findIndex(post => post.post_id.toString() === postId);// Find the index of the post with the given postId
+        const postIndex = allPosts.findIndex(post => post.post_id === postId);// Find the index of the post with the given postId
 
         if (postIndex === -1) { //if post index is not found then error
             res.status(404).json({ message: 'Post not found' });
@@ -77,7 +78,7 @@ router.delete('/delete/:id', (req, res) => {
     try {
         const postId = req.params.id;
         let allPosts = read(dbPath); 
-        const postIndex = allPosts.findIndex(post => post.post_id.toString() === postId);// Find the index of the post with the given postId
+        const postIndex = allPosts.findIndex(post => post.post_id === postId);// Find the index of the post with the given postId
 
         if (postIndex === -1) { // If post not found, return 404
             res.status(404).json({ message: 'Post not found' });
