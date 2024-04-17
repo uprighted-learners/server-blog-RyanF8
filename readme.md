@@ -23,7 +23,7 @@ Create an `api` folder which will hold `blog.json` file. The file should contain
 ```json
 [
     {
-        "post_id": 1,
+        "post_id": "1",
         "title": "First Blog Post",
         "author": "Paul Niemczyk",
         "body": "These student devs keep getting younger and smarter"

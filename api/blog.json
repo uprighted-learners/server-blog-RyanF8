@@ -1,1 +1,8 @@
-[{"post_id":1,"title":"First Blog Post","author":"Paul Niemczyk","body":"These student devs keep getting younger and smarter"},{"post_id":"d39176d4-fa05-4be7-90a5-516b3650b581","title":"Second Blog Post","author":"Ryan Fish","body":"wassup my dudes"}]
+[
+    {
+        "post_id": "1",
+        "title": "First Blog Post",
+        "author": "Paul Niemczyk",
+        "body": "These student devs keep getting younger and smarter"
+    }
+]
