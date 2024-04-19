@@ -1,8 +1,1 @@
-[
-    {
-        "post_id": "1",
-        "title": "First Blog Post",
-        "author": "Paul Niemczyk",
-        "body": "These student devs keep getting younger and smarter"
-    }
-]
+[{"post_id":"1","title":"First Blog Post","author":"Paul Niemczyk","body":"These student devs keep getting younger and smarter"},{"post_id":"9f586c09-b8c7-4fb4-943e-09cdb3d7751a","title":"This shit works!","author":"Ryan","body":"Dude we got a functioning blog!\n"}]
