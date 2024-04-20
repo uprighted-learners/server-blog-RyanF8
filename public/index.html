@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <title>Blog Post Front End</title>
+</head>
+<body>
+    <h1>Blog Server</h1>
+
+    <h2>Create Post</h2>
+    <form id="blogForm">
+      <label>Title</label>
+      <input type="text" name="title" id="title" required />
+      <label>Author</label>
+      <input type="text" name="author" id="author" required />
+      <label>What's on your mind?</label>
+      <textarea id="body" cols="30" rows="10" required></textarea>
+      <button type="submit">Create Post</button>
+    </form>
+    
+    <H2>Posts</H2>
+    <ul id = "postLists"></ul>
+
+    <script src="./script.js"></script>
+</body>
+</html>

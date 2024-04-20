@@ -23,7 +23,7 @@ Create an `api` folder which will hold `blog.json` file. The file should contain
 ```json
 [
     {
-        "post_id": 1,
+        "post_id": "1",
         "title": "First Blog Post",
         "author": "Paul Niemczyk",
         "body": "These student devs keep getting younger and smarter"
@@ -61,3 +61,5 @@ Make sure that your completed design sends a response back to the client with ap
 - [ ] Existing setup requires us to keep track of the `post_id`. In your entry creation route, create a feature that will check where your makeshift db is in terms of its id's and creates a new one for each entry. Don't overthink it. A simple counter-style 1, 2, 3 is sufficient.
 
 - [ ] If you're feeling extra confident, create static files that will serve up the content to the user using DOM and fetch to retrieve the data from the server. These files are then served by ALL blog posts endpoint as well as ONE blog post endpoint.
+
+-for the second part I would want a blank html page attached to a index.js or frontEnd.js page that has event listeners for all of my end points
